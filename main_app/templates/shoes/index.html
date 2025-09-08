@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/shoes/shoe-index.css' %}"
+/>
+{% endblock %} {% block content %}
+
+<section class="page-header">
+    <h1> Shoe List </h1>
+
+</section>
+
+<section class="card-container">
+    {% for shoe in shoes %}
+    <div class="card">
+        <div class="card-content">
+            <h2 class="card-title">{{ shoe.type}}</h2>
+            <h4> {{ shoe.name }} </h4>
+            <p>{{ shoe.description }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock %}
