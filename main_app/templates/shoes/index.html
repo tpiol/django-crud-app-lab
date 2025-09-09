@@ -12,12 +12,15 @@
 
 <section class="card-container">
     {% for shoe in shoes %}
+		
     <div class="card">
-        <div class="card-content">
-            <h2 class="card-title">{{ shoe.type}}</h2>
-            <h4> {{ shoe.name }} </h4>
-            <p>{{ shoe.description }}</p>
-        </div>
+			<a href="{% url 'shoe-detail' shoe.id %}">
+            <div class="card-content">
+              <h2 class="card-title">{{ shoe.type}}</h2>
+              <h4> {{ shoe.name }} </h4>
+              <p>{{ shoe.description }}</p>
+          </div>
+				</a>
     </div>
     {% endfor %}
 </section>
