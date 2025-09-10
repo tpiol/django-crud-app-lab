@@ -8,8 +8,13 @@
  
   <div class="shoe-details">
     <h1>{{ shoe.name }}</h1>
-    <h2>A {{ shoe.type }}</h2>
+    <h2>{{ shoe.type }}</h2>
     <p>{{ shoe.description }}</p>
+
+    <div class="shoe-actions">
+    <a href="{% url 'shoe-update' shoe.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'shoe-delete' shoe.id %}" class="btn danger">Delete</a>
+  </div>
   </div>
 </section>
 {% endblock %}
