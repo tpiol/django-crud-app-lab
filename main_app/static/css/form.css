@@ -1,39 +1,72 @@
 .form-container {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
 }
 
 table {
-  padding: 0 40px;
   width: 100%;
-  border-spacing: 0 20px;
+  border-spacing: 0 16px;
 }
 
 th {
   text-align: left;
-  padding: 6px 20px 0 0;
-  font-weight: normal;
+  padding: 6px 16px 0 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #333;
   vertical-align: top;
-  font-size: var(--font-reg);
 }
 
 td {
-  max-width: 60%;
+  max-width: 70%;
 }
+
 
 td > * {
   width: 100%;
-  padding: 2px 4px;
-  font-size: var(--font-l);
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
 }
+
+td > *:focus {
+  border-color: #0077ff;
+  box-shadow: 0 0 0 3px rgba(0,119,255,0.1);
+}
+
 
 td > textarea {
-  height: calc(4 * var(--font-l) + 8px);
+  min-height: 120px;
   font-family: inherit;
+  resize: vertical;
 }
 
+/* Button styling */
 .btn {
   align-self: flex-end;
-  margin-right: 40px;
+  margin-right: 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #005fcc;
 }

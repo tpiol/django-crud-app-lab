@@ -1,4 +1,108 @@
 .shoe-container {
-    display: flex;
-    justify-content: center;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.shoe-card, .form-card, .history-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.shoe-card:hover, .form-card:hover, .history-card:hover {
+  transform: translateY(-4px);
+}
+
+.shoe-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #111;
+}
+
+.shoe-subtitle {
+  font-size: 1.2rem;
+  color: #ff3d00; /* sneaker orange accent */
+  margin-bottom: 1rem;
+}
+
+.shoe-description {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.shoe-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-edit {
+  background: #ffcc00;
+  color: #111;
+}
+
+.btn-edit:hover {
+  background: #e6b800;
+}
+
+.btn-delete {
+  background: #ff3d00;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background: #d93400;
+}
+
+.btn-submit {
+  background: #111;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.cleaning-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.cleaning-table th, .cleaning-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.cleaning-table th {
+  background: #111;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.cleaning-table tr:hover {
+  background: #f9f9f9;
+}
+
+.empty-state {
+  text-align: center;
+  color: #666;
+  padding: 1rem;
+  font-style: italic;
 }

@@ -14,22 +14,19 @@
     {% endblock %}
   </head>
   <body>
-    <header>
-      <div class="header-logo-container">
-        <a href="/">
-          <img src="" alt="The Shoe Collector Logo" />
-        </a>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'shoe-create' %}">Add a Shoe</a></li>
-          <li><a href="{% url 'shoe-index' %}">All Shoes</a></li>
-
-        </ul>
-      </nav>
-    </header>
+   <header class="navbar">
+    <div class="container navbar-container">
+    <div class="logo">
+      <a href="{% url 'home' %}">🏀 Shoe Collector</a>
+    </div>
+    <nav class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'shoe-create' %}">Add a Shoe</a>
+      <a href="{% url 'shoe-index' %}">All Shoes</a>
+    </nav>
+  </div>
+  </header>
     <main>
      {% block content %} 
      {% endblock %}
