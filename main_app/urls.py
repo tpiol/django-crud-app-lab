@@ -23,4 +23,8 @@ urlpatterns = [
 
     path('closet/<int:pk>/update/', views.ClosetUpdate.as_view(), name='closet-update'),
     path('closet/<int:pk>/delete/', views.ClosetDelete.as_view(), name='closet-delete'),
+
+    path('shoes/<int:shoe_id>/associate-closet/<int:closet_id>/', views.associate_closet, name='associate-closet'),
+
+    path('shoes/<int:shoe_id>/remove-closet/<int:closet_id>/', views.remove_closet, name='remove-closet'),
 ]

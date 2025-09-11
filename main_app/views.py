@@ -18,12 +18,15 @@ def shoe_index(request):
 
 def shoe_detail(request,shoe_id):
     shoe = Shoe.objects.get(id=shoe_id)
+    closets_shoe_doesnt_have = Closet.objects.exclude(id__in = shoe.closets.all().values_list('id'))
     cleaning_form = CleaningForm()
-    return render(request, 'shoes/detail.html', {'shoe': shoe, 'cleaning_form': cleaning_form})
+    return render(request, 'shoes/detail.html', 
+            {'shoe': shoe, 'cleaning_form': cleaning_form,
+                'closets': closets_shoe_doesnt_have})
 
 class ShoeCreate(CreateView):
     model = Shoe
-    fields = '__all__'
+    fields = ['name', 'type', 'description']
 
 class ShoeUpdate(UpdateView):
     model = Shoe
@@ -60,3 +63,11 @@ class ClosetUpdate(UpdateView):
 class ClosetDelete(DeleteView):
     model = Closet
     success_url = '/closet/'
+
+def associate_closet(request, shoe_id, closet_id):
+    Shoe.objects.get(id=shoe_id).closets.add(closet_id)
+    return redirect('shoe-detail', shoe_id=shoe_id)
+
+def remove_closet(request, shoe_id, closet_id):
+    Shoe.objects.get(id=shoe_id).closets.remove(closet_id)
+    return redirect('shoe-detail', shoe_id=shoe_id)

@@ -14,13 +14,22 @@ CLEANING_METHODS = [
         ('PRO', 'Professional Service'),
     ]
 
-
+class Closet(models.Model):
+    name = models.CharField(max_length=50)
+    location = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('closet-detail', kwargs={'pk': self.id})
 
 class Shoe(models.Model): 
     name = models.CharField(max_length=100)
     type = models.CharField(max_length=100)
     description = models.TextField(max_length=400)
-
+    closets = models.ManyToManyField(Closet)
+    
     def __str__(self):
         return self.name
     
@@ -43,12 +52,3 @@ class Cleaning(models.Model):
     class Meta:
         ordering = ['-date']  
 
-class Closet(models.Model):
-    name = models.CharField(max_length=50)
-    location = models.CharField(max_length=50)
-    
-    def __str__(self):
-        return self.name
-    
-    def get_absolute_url(self):
-        return reverse('closet-detail', kwargs={'pk': self.id})
