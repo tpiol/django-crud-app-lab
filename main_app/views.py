@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Shoe
+from django.views.generic import ListView, DetailView
+from .models import Shoe, Closet
 from .forms import CleaningForm
 
 # Create your views here.
@@ -41,3 +42,21 @@ def add_cleaning(request, shoe_id):
         new_cleaning.save()
 
     return redirect('shoe-detail', shoe_id=shoe_id)
+
+class ClosetCreate(CreateView):
+    model = Closet
+    fields = '__all__'
+
+class ClosetList(ListView):
+    model = Closet
+
+class ClosetDetail(DetailView):
+    model = Closet 
+
+class ClosetUpdate(UpdateView):
+    model = Closet
+    fields = ['name', 'location']
+
+class ClosetDelete(DeleteView):
+    model = Closet
+    success_url = '/closet/'

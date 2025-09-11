@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/closet/closet-index.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>All Shoe Closets</h1>
+</section>
+
+<section class="card-container">
+  {% for closet in closet_list %}
+    <div class="card" style="border-color: {{ closet.color }}">
+      <div class="card-bg" style="background-color: {{ closet.color }}"></div>
+      <a href="{% url 'closet-detail' closet.id %}">
+        <div class="card-content">
+          <h2>{{ closet.name }}</h2>
+          <p>Located in the {{ closet.location }}</p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

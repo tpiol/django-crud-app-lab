@@ -15,4 +15,12 @@ urlpatterns = [
     
     path('shoes/<int:shoe_id>/add-cleaning/', views.add_cleaning, 
     name='add-cleaning'),
+
+    path('closet/create/', views.ClosetCreate.as_view(), name='closet-create'),
+
+    path('closet/<int:pk>/', views.ClosetDetail.as_view(), name='closet-detail'),
+    path('closet/', views.ClosetList.as_view(), name='closet-index'),   
+
+    path('closet/<int:pk>/update/', views.ClosetUpdate.as_view(), name='closet-update'),
+    path('closet/<int:pk>/delete/', views.ClosetDelete.as_view(), name='closet-delete'),
 ]
