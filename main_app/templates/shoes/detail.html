@@ -63,47 +63,56 @@
 
   <section class="closets">
   <div class="subsection-title">
-    <h2>Closets</h2>
-  </div>
-  <h3>{{ shoe.name }}'s Closets</h3>
-  <div class="subsection-content">
-    {% if shoe.closets.count %} 
-      {% for closet in shoe.closets.all %}
-        <div class="closet-container">
-          <div class="color-block" style="background-color: {{ closet.color }}"></div>
-          <a href="{% url 'closet-detail' closet.id %}">
-            <p>{{ closet.name }} {{ closet.location }}</p>
-          </a>
-        </div>
-        <form action="{% url 'remove-closet' shoe.id closet.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Remove Shoe from Closet</button>
-        </form>
-      {% endfor %} 
-    {% else %}
-      <p class="no-closets">{{shoe.name}} doesn't belong to any closets!</p>
-    {% endif %}
+    <h3>{{ shoe.name }}'s Closets</h3>
   </div>
 
-   <h3>Available Closets</h3>
-  <div class="subsection-content">
-  {% if closets.count %} 
-    {% for closet in closets %}
-      <div class="closet-container">
-        <div class="color-block" style="background-color: {{ closet.color }}"></div>
-        <a href="{% url 'closet-detail' closet.id %}">
-          <p>{{ closet.name }} in the {{ closet.location }}</p>
-        </a>
-        <form action="{% url 'associate-closet' shoe.id closet.id %}" method="post">
-          {% csrf_token %}
-          <button type="submit" class="btn submit">Add Shoe to Closet</button>
-        </form>
-      </div>
-    {% endfor %} 
+  {% if shoe.closets.count %}
+    <table class="closet-table">
+      <tbody>
+        {% for closet in shoe.closets.all %}
+          <tr>
+            <td>
+              <div class="closet-container">
+                <div class="color-block" style="background-color: {{ closet.color }}"></div>
+                <p>{{ closet.name }} {{ closet.location }}</p>
+              </div>
+              <form action="{% url 'remove-closet' shoe.id closet.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Remove Shoe from Closet</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   {% else %}
-    <p class="all-closets">{{shoe.name}} already belongs to all the closets 🥳</p>
+    <p class="no-closets">{{ shoe.name }} doesn't belong to any closets!</p>
   {% endif %}
-</div>
+
+  <h3>Available Closets</h3>
+
+  {% if closets.count %}
+    <table class="closet-table">
+      <tbody>
+        {% for closet in closets %}
+          <tr>
+            <td>
+              <div class="closet-container">
+                <div class="color-block" style="background-color: {{ closet.color }}"></div>
+                <p>{{ closet.name }} in the {{ closet.location }}</p>
+              </div>
+              <form action="{% url 'associate-closet' shoe.id closet.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn submit">Add Shoe to Closet</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="all-closets">{{ shoe.name }} already belongs to all the closets 🥳</p>
+  {% endif %}
 </section>
 
 </section>

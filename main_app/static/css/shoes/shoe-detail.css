@@ -1,3 +1,4 @@
+/* ---------- Container ---------- */
 .shoe-container {
   max-width: 900px;
   margin: 2rem auto;
@@ -5,19 +6,22 @@
   font-family: "Helvetica Neue", sans-serif;
 }
 
+/* ---------- Shoe / Form / History Cards ---------- */
 .shoe-card, .form-card, .history-card {
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   padding: 2rem;
   margin-bottom: 2rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .shoe-card:hover, .form-card:hover, .history-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
+/* ---------- Shoe Info ---------- */
 .shoe-title {
   font-size: 2.5rem;
   font-weight: 800;
@@ -38,6 +42,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* ---------- Shoe Actions Buttons ---------- */
 .shoe-actions {
   display: flex;
   gap: 1rem;
@@ -48,7 +53,9 @@
   border-radius: 10px;
   font-weight: 600;
   text-decoration: none;
-  transition: 0.3s ease;
+  transition: 0.3s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-edit {
@@ -58,6 +65,7 @@
 
 .btn-edit:hover {
   background: #e6b800;
+  transform: translateY(-2px);
 }
 
 .btn-delete {
@@ -67,6 +75,7 @@
 
 .btn-delete:hover {
   background: #d93400;
+  transform: translateY(-2px);
 }
 
 .btn-submit {
@@ -107,4 +116,91 @@
   font-style: italic;
 }
 
+/* ---------- Closets Section ---------- */
+.closets {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
 
+/* Section Titles */
+.subsection-title h2,
+.closets h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ff3d00; /* sneaker accent */
+  margin-bottom: 1rem;
+}
+
+/* ---------- Closet Table Styling ---------- */
+.closet-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem; /* space between rows like cards */
+}
+
+.closet-table th, .closet-table td {
+  border: none;
+  padding: 0;
+}
+
+.closet-table td {
+  vertical-align: top;
+}
+
+/* Make each closet row look like a card */
+.closet-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.closet-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* Closet Name and Location Text */
+.closet-container p {
+  margin: 0;
+  font-size: 1rem;
+  color: #111;
+  font-weight: 600;
+}
+
+/* Buttons inside closet card */
+.btn.submit, .btn.btn-danger {
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn.submit {
+  background: #ff3d00;
+  color: #fff;
+}
+
+.btn.submit:hover {
+  background: #d93400;
+  transform: translateY(-2px);
+}
+
+.btn.btn-danger {
+  background: #111;
+  color: #fff;
+}
+
+.btn.btn-danger:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
