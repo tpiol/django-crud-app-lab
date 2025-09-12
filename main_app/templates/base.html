@@ -20,12 +20,22 @@
       <a href="{% url 'home' %}">🏀 Shoe Collector</a>
     </div>
     <nav class="nav-links">
-      <a href="{% url 'home' %}">Home</a>
-      <a href="{% url 'about' %}">About</a>
-      <a href="{% url 'shoe-create' %}">Add a Shoe</a>
+        <ul>
+    {% if user.is_authenticated %}
       <a href="{% url 'shoe-index' %}">All Shoes</a>
       <a href="{% url 'closet-index' %}">All Closets</a>
+      <a href="{% url 'shoe-create' %}">Add a Shoe</a>
       <a href="{% url 'closet-create' %}">Add a Closet</a>
+      <a href="{% url 'about' %}">About</a>
+      <form id="logout-form" method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit">Log out</button>
+    {% else %}
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+  </ul>
     </nav>
   </div>
   </header>

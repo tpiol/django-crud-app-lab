@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 CLEANING_METHODS = [
         ('HAND', 'Hand Wash (Soap & Water)'),
@@ -29,6 +30,7 @@ class Shoe(models.Model):
     type = models.CharField(max_length=100)
     description = models.TextField(max_length=400)
     closets = models.ManyToManyField(Closet)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name
